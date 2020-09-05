@@ -11,13 +11,18 @@ int main()
     cout<<Cache.getMostRecent()->key;
     cout<<endl;
 
-    cout<<Cache.getValuefrom("a");
+    Cache.getValuefrom("a");
     cout<<endl;
     cout<<Cache.getMostRecent()->key;
+    cout<<endl;
+
+    Cache.insert("d",4);
+
+    Cache.getValuefrom("b");
+
+    Cache.insert("a",5);
 
 
-    //    Cache.imprimir();
-//    cout<<endl;
-//    Cache.imprimir_inverso();
+    Cache.imprimir();
 
 }
