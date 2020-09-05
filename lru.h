@@ -56,6 +56,9 @@ public:
         auto nuevo=new Node<T>;
         nuevo->data=value;
         nuevo->key=key;
+
+
+
         if(nodes<size)
         {
             if(nodes==0)
@@ -74,6 +77,17 @@ public:
         }
         else
         {
+            this->head->key=key;
+            this->head->data=value;
+            auto aux=this->head;
+
+
+            aux->next->prev= nullptr;
+            this->head=aux->next;
+            this->tail->next=aux;
+            aux->prev=this->tail;
+            this->tail=aux;
+            this->tail->next= nullptr;
         }
     }
 
@@ -82,11 +96,12 @@ public:
         return this->tail;
     }
 
-    T getValuefrom(string key)
+    bool getValuefrom(string key)
     {
         if(this->tail->key==key)
         {
-            return this->tail->data;
+            cout<<this->tail->data;
+            return 0;
         }
         auto aux=this->head;
         if(this->head->key==key)
@@ -96,21 +111,33 @@ public:
             this->tail->next=aux;
             aux->prev=this->tail;
             this->tail=aux;
-            return aux->data;
+            cout<< aux->data;
+            return 0;
 
         }
 
         while(aux->key!=key) {
+
             aux = aux->next;
+            if(aux== nullptr)
+                break;
         }
 
-        aux->prev->next=aux->next;
-        aux->next->prev=aux->prev;
-        this->tail->next=aux;
-        aux->prev=this->tail;
-        aux->next= nullptr;
-        this->tail=aux;
-        return aux->data;
+        if(aux== nullptr)
+        {
+            cout<<"No encontrado"<<endl;
+            return 0;
+        }
+        else {
+            aux->prev->next = aux->next;
+            aux->next->prev = aux->prev;
+            this->tail->next = aux;
+            aux->prev = this->tail;
+            aux->next = nullptr;
+            this->tail = aux;
+            cout<< aux->data;
+        }
+        return 0;
     }
 };
 
