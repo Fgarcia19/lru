@@ -19,7 +19,7 @@ template <typename T>
 class LRU{
     Node<T>* head;
     Node<T>* tail;
-    map<string,Node<T>*> table;
+    unordered_map<string,Node<T>*> table;
     int nodes;
     int size;
 public:
