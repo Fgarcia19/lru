@@ -54,7 +54,9 @@ void FIFO(Cache<T1,T2>* cache,T1 key, T2 data)
             cache->table[key] = aux;
         }
     }
-
+    else{
+        cache->table.erase(key);
+    }
 };
 
 
